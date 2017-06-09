@@ -1,0 +1,34 @@
+
+{
+    "name" : "GiancArtboard",
+    "identifier" : "giancArtboard.plugin",
+    "version" : "1.0",
+    "description" : "Export all artboards numbered and perfectly organized into folders. No more inaccuracies!",
+    "icon" : "icons/exportAllPages.png",
+    "authorEmail" : "m.vacca03@gmail.com",
+    "author" : "Matteo Vacca",
+
+    "commands" : [
+    {
+      "name" : "Configure GiancArtboard",
+      "script" : "giancArtboard.js",
+      "handler" : "onRun",
+      "shortcut" : "control alt y",
+      "identifier" : "giancArtboard.plugin.Run"
+    },
+    {
+      "name" : "Run GiancArtboard",
+      "script" : "giancArtboard.js",
+      "handler" : "exportAll",
+      "shortcut" : "control shift o",
+      "identifier" : "giancArtboard.plugin.exportAll"
+    },
+    {
+      "script" : "correctInacurracy.js",
+      "handler" : "onRun",
+      "shortcut" : "control shift i",
+      "name" : "correctInacurracy",
+      "identifier" : "giancArtboard.plugin.correctInacurracy"
+    }
+  ],
+}
