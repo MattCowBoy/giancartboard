@@ -14,14 +14,14 @@
       "script" : "giancArtboard.js",
       "handler" : "onRun",
       "shortcut" : "control alt y",
-      "identifier" : "giancArtboard.plugin.Run"
+      "identifier" : "giancArtboard.plugin.giancArtboard"
     },
     {
       "name" : "Run GiancArtboard",
-      "script" : "giancArtboard.js",
-      "handler" : "exportAll",
-      "shortcut" : "control shift o",
-      "identifier" : "giancArtboard.plugin.exportAll"
+      "script" : "runGiancArtboard.js",
+      "handler" : "onRun",
+      "shortcut" : "control alt o",
+      "identifier" : "giancArtboard.plugin.runGiancArtboard"
     },
     {
       "script" : "correctInacurracy.js",

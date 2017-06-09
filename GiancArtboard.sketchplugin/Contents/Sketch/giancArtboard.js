@@ -1,18 +1,18 @@
 @import 'common.js'
 
 function savePreference(value, name){
-  log("savePreference: " + value + ", " + name)
+ //log("savePreference: " + value + ", " + name)
   var userDefaults = NSUserDefaults.standardUserDefaults()
   userDefaults.setObject_forKey(value, name);
   userDefaults.synchronize();
-  log("Valore salvato CAZZO: " + userDefaults.objectForKey(name))
+  //log("Valore salvato CAZZO: " + userDefaults.objectForKey(name))
 
 }
 
 function getPreference(key){
   var defaults = NSUserDefaults.standardUserDefaults();
   var value = defaults.objectForKey(key)
-  log("Valore recuperato: " + value)
+  //log("Valore recuperato: " + value)
   return value;
 }
 
@@ -80,6 +80,7 @@ function createDialog(context, rootPath)
   	projectName.setStringValue(documentName + " export");
   	view.addSubview(projectName);
 
+
   	//DEVICES
   	//you can specify up to 4 devices. Each device has a name and a width. Artboards will be saved in one of those folders, based on their
   	//width (ex. if you have a folder named "Mobile" with a width of "320", if in your sketch file there is an artboard that has a width of 320
@@ -107,10 +108,13 @@ function createDialog(context, rootPath)
 	// Create first device inputs
   	deviceName1 = NSTextField.alloc().initWithFrame(NSMakeRect(0, viewHeight - (field_y + distance_label), 200, 20));
   	deviceDim1 = NSTextField.alloc().initWithFrame(NSMakeRect(210, viewHeight - (field_y + distance_label), 90, 20));
-  
+  	deviceName1.setStringValue(getPreference("deviceNome1"));
+  	deviceDim1.setStringValue(getPreference("deviceDim1"));
+
   	view.addSubview(deviceName1);
   	view.addSubview(deviceDim1);
-	
+
+  
   	field_y += distance_field;
 
 
@@ -125,7 +129,9 @@ function createDialog(context, rootPath)
 	// Create second device inputs
   	deviceName2 = NSTextField.alloc().initWithFrame(NSMakeRect(0, viewHeight - (field_y + distance_label), 200, 20));
   	deviceDim2 = NSTextField.alloc().initWithFrame(NSMakeRect(210, viewHeight - (field_y + distance_label), 90, 20));
-  
+  	deviceName2.setStringValue(getPreference("deviceNome2"));
+  	deviceDim2.setStringValue(getPreference("deviceDim2"));
+
   	view.addSubview(deviceName2);
   	view.addSubview(deviceDim2);
 
@@ -143,7 +149,10 @@ function createDialog(context, rootPath)
 	// Create second device inputs
   	deviceName3 = NSTextField.alloc().initWithFrame(NSMakeRect(0, viewHeight - (field_y + distance_label), 200, 20));
   	deviceDim3 = NSTextField.alloc().initWithFrame(NSMakeRect(210, viewHeight - (field_y + distance_label), 90, 20));
-  
+  	deviceName3.setStringValue(getPreference("deviceNome3"));
+  	deviceDim3.setStringValue(getPreference("deviceDim3"));
+
+
   	view.addSubview(deviceName3);
   	view.addSubview(deviceDim3);
 
@@ -161,7 +170,10 @@ function createDialog(context, rootPath)
 	// Create fourth device inputs
   	deviceName4 = NSTextField.alloc().initWithFrame(NSMakeRect(0, viewHeight - (field_y + distance_label), 200, 20));
   	deviceDim4 = NSTextField.alloc().initWithFrame(NSMakeRect(210, viewHeight - (field_y + distance_label), 90, 20));
-  
+  	deviceName4.setStringValue(getPreference("deviceNome4"));
+  	deviceDim4.setStringValue(getPreference("deviceDim4"));
+
+	
   	view.addSubview(deviceName4);
   	view.addSubview(deviceDim4);
 	
@@ -275,7 +287,7 @@ var onRun = function(context) {
 	var doc = context.document
 	var artboard_is_present = 0;
 	//reference all the pages in the document in an array
-  	var docPages = [doc pages];
+  	var pages = [doc pages];
 
   	docName = context.document.displayName();
 
@@ -285,9 +297,9 @@ var onRun = function(context) {
   	var fileFolder = doc.fileURL().path().split(doc.displayName())[0];
 
 	// Check if there are artboards in each page of the document
-	for(var p=0; p < docPages.count(); p++)
+	for(var p=0; p < pages.count(); p++)
 	{
-		if (docPages[p].artboards().length == 0 && artboard_is_present == 0) 
+		if (pages[p].artboards().length == 0 && artboard_is_present == 0) 
 		{
     	 artboard_is_present = 0;
 		}
@@ -306,7 +318,7 @@ var onRun = function(context) {
 	var alert = createDialog(context, fileFolder);
 	var options=handleAlertResponse(alert,alert.runModal());
 
-	if(options == null) return;
+	if(options == null){doc.showMessage("Cancelled"); return;}
 
 	//Device name and widths
 	var project = options.prjName;
@@ -343,19 +355,7 @@ var onRun = function(context) {
   	savePreference(rootFolder, "rootFolder");
 
 
-  	 log("Rootfolder: " + rootFolder)
-
-  	exportAll(doc,options, docName,docPages,rootFolder);
-}
-
-
-function exportAll(){
-
-	var sketch = context.api();
-	var doc = context.document
-	var artboard_is_present = 0;
-	//reference all the pages in the document in an array
-  	var pages = [doc pages];
+  	 //log("Rootfolder: " + rootFolder)
 
 	//Flag used to keep track of artboards' number in the document
   	var totalArtboards = 0;
@@ -591,6 +591,4 @@ function exportAll(){
     // Success message
        doc.showMessage(totalArtboards.toString() + "have been exported in " + rootFolder.toString());
  }
-
-
 }
