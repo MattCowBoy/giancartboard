@@ -7,10 +7,10 @@ Now you can exclude artboards or pages from exporting by prefixing their name wi
 
 GiancArtboard is a Sketch plugin with 2 main features:
 
-1. Quick export of artboards, grouped in ordered folders by pages and resolution (width)
-	 This features is useful if you are working on a responsive project or on a project with many 
-	 pages and artboards.
-2. Mark all artboards with wrong width caused by a mistake (ex. 322px instead of 320px)
+1. Quick exportation of artboards grouped in  folders ordered by pages and resolution (width). 
+   This feature is useful if you are working on a responsive project or on a
+   project with many pages and artboards.
+2. Marking of all artboards with wrong width which was caused by a mistake (ex. 322px instead of 320px)
 
 # Feature 1: Exporting artboards
 ## How does it work?
