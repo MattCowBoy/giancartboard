@@ -1,19 +1,19 @@
+@import 'common.js'
+
 function savePreference(value, name){
- //log("savePreference: " + value + ", " + name)
   var userDefaults = NSUserDefaults.standardUserDefaults()
   userDefaults.setObject_forKey(value, name);
   userDefaults.synchronize();
-  //log("Valore salvato CAZZO: " + userDefaults.objectForKey(name))
+  log("Saved value: " + userDefaults.objectForKey(name))
 
 }
 
 function getPreference(key){
   var defaults = NSUserDefaults.standardUserDefaults();
   var value = defaults.objectForKey(key)
-  //log("Valore recuperato: " + value)
+  log("Retrieved value: " + value)
   return value;
 }
-
 
 var onRun = function(context) {
 
@@ -23,12 +23,19 @@ var onRun = function(context) {
   //reference all the pages in the document in an array
   var pages = [doc pages];
 
-  docName = context.document.displayName();
+  var docName = context.document.displayName();
+  var savedName = getPreference("nome");
+
+  //this is the folder where the sketch file is located
+  var root = doc.fileURL().path().split(doc.displayName())[0];
+  var fileFolder = root + savedName +"/";
+  var rootFolder = getPreference("fileFolder");
+
+  log("path originale" + fileFolder + " - " + "Path recuperato:" + rootFolder);
+  log("Nome originale" + docName + " - " + "Nome Recuperato:" + savedName);
+
 
   if(docName.substring(0,8) == "Untitled") doc.showMessage("Save the file with a name other than Untitled before exporting it");
-  
-    //this is the folder where the sketch file is located
-  var fileFolder = doc.fileURL().path().split(doc.displayName())[0];
 
   // Check if there are artboards in each page of the document
   for(var p=0; p < pages.count(); p++)

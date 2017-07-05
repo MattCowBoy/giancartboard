@@ -1,6 +1,21 @@
 @import 'common.js'
-@import 'giancArtboard.js'
 
+function savePreference(value, name){
+  var userDefaults = NSUserDefaults.standardUserDefaults()
+  userDefaults.setObject_forKey(value, name);
+  userDefaults.synchronize();
+  log("Saved value: " + userDefaults.objectForKey(name))
+
+}
+
+function getPreference(key){
+  var defaults = NSUserDefaults.standardUserDefaults();
+  var value = defaults.objectForKey(key)
+  log("Retrieved value: " + value)
+  return value;
+}
+
+//Create the label for the modal input
 function createLabel(text,size,frame) {
   var label = [[NSTextField alloc] initWithFrame:frame];
   [label setStringValue:text];
@@ -12,30 +27,25 @@ function createLabel(text,size,frame) {
 
   return label;
 }
+
+//Save the index of incorrect artboards
 function saveInaccuracyIndex(value, name){
- //log("savePreference: " + value + ", " + name)
   var userDefaults = NSUserDefaults.standardUserDefaults()
   userDefaults.setObject_forKey(value, name);
   userDefaults.synchronize();
-  //log("Valore salvato CAZZO: " + userDefaults.objectForKey(name))
+  log("Saved value: " + userDefaults.objectForKey(name))
 
 }
 
+//Get the index of incorrect artboards
 function getInaccuracyIndex(key){
   var defaults = NSUserDefaults.standardUserDefaults();
   var value = defaults.objectForKey(key)
-  //log("Valore recuperato: " + value)
+  log("Retrieved value: " + value)
   return value;
 }
 
-
-function getPreference(key){
-  var defaults = NSUserDefaults.standardUserDefaults();
-  var value = defaults.objectForKey(key)
-  //log("Valore recuperato: " + value)
-  return value;
-}
-
+//Create text field
 function createField(value,frame) {
   var field = [[NSTextField alloc] initWithFrame:frame];
   [field setStringValue:value];
@@ -77,7 +87,8 @@ function createDialog(context)
     //this will be saved in the Mobile folder.)
 
     var distance_title = 20;
-    //Titolo risoluzioni
+    
+    //Title
     titleLabel = createLabel('Define devices width',14,NSMakeRect(0, viewHeight - distance_title, (viewWidth) - viewSpacer, 20));
     titleLabel.setFont([NSFont systemFontOfSize:14 weight:NSFontWeightBold]);
     view.addSubview(titleLabel);
@@ -158,7 +169,7 @@ function createDialog(context)
 }
 
 
-// Check which button has been clicked (1000 == "Export")
+// Check which button has been clicked (1000 == "Check")
 function handleAlertResponse(alert, responseCode) {
     if (responseCode == "1000") {
         
@@ -223,6 +234,12 @@ var onRun = function(context) {
     if(deviceDimension3 == "") deviceDimension3 = 0;
     if(deviceDimension4 == "") deviceDimension4 = 0;
 
+    //save entered widths in cache
+    savePreference(deviceDimension1, "deviceDim1");
+    savePreference(deviceDimension2, "deviceDim2");
+    savePreference(deviceDimension3, "deviceDim3");
+    savePreference(deviceDimension4, "deviceDim4");
+
 
      //Loop through the pages of the document
   for (var i = 0; i < pages.count(); i++){
@@ -253,31 +270,32 @@ var onRun = function(context) {
            
                     var layer = layers.objectAtIndex(layers.length-1);
 
-                    if (layer.name() == "Inesattezza") {
+                    if (layer.name() == "Incorrect artboard") {
                         
                         artboardAlreadyMarked = true;
+                        saveInaccuracyIndex(layer.name(),"Incorrect artboard");
                     }
 
                    if(artboardAlreadyMarked == false)
                    {
-                   var rect = MSRectangleShape.alloc().init();
-                   //rect.frame = MSRect.rectWithRect(NSMakeRect((incorrectArtboard.frame().width()/2)-((incorrectArtboard.frame().width()-60)/2), (incorrectArtboard.frame().height()/2)-((incorrectArtboard.frame().height()-60)/2), (incorrectArtboard.frame().width()-60), (incorrectArtboard.frame().height()-60)));
-                   rect.frame = MSRect.rectWithRect(NSMakeRect(0, 0, incorrectArtboard.frame().width(), incorrectArtboard.frame().height()));
+                      var rect = MSRectangleShape.alloc().init();
+                      //rect.frame = MSRect.rectWithRect(NSMakeRect((incorrectArtboard.frame().width()/2)-((incorrectArtboard.frame().width()-60)/2), (incorrectArtboard.frame().height()/2)-((incorrectArtboard.frame().height()-60)/2), (incorrectArtboard.frame().width()-60), (incorrectArtboard.frame().height()-60)));
+                      rect.frame = MSRect.rectWithRect(NSMakeRect(0, 0, incorrectArtboard.frame().width(), incorrectArtboard.frame().height()));
             
                       // Place it in the document
-                   var rectangle = MSShapeGroup.shapeWithPath(rect);
-                   var fill = rectangle.style().addStylePartOfType(0);
-                   fill.color = MSColor.colorWithRed_green_blue_alpha(255/255,0/255,0/255,0.50);
-                   rectangle.setName("Inesattezza");
+                      var rectangle = MSShapeGroup.shapeWithPath(rect);
+                      var fill = rectangle.style().addStylePartOfType(0);
+                      fill.color = MSColor.colorWithRed_green_blue_alpha(255/255,0/255,0/255,0.50);
+                      rectangle.setName("Incorrect artboard");
 
-                  // If an artboard is selected place it there otherwise put it in the page
+                      // If an artboard is selected place it there otherwise put it in the page
    
-                  incorrectArtboard.addLayers([rectangle]);
-                  saveInaccuracyIndex(j,"ArtboardIndex");
-                  saveInaccuracyIndex(i,"PageIndex");
-                  log(getInaccuracyIndex("ArtboardIndex"));
-                  log(getInaccuracyIndex("PageIndex"));
-                  counter++;
+                      incorrectArtboard.addLayers([rectangle]);
+                      saveInaccuracyIndex(j,"ArtboardIndex");
+                      saveInaccuracyIndex(i,"PageIndex");
+                      log(getInaccuracyIndex("ArtboardIndex"));
+                      log(getInaccuracyIndex("PageIndex"));
+                      counter++;
 
                   }else counter++;
             }
@@ -289,7 +307,7 @@ var onRun = function(context) {
   }
 
     // Success message
-       doc.showMessage("Ho contrassegnato " + counter + " artboards inesatte") ;  
+       doc.showMessage(counter + " incorrect artboards have been marked!") ;  
 }
 
 var nextInaccuracy = function(context){
