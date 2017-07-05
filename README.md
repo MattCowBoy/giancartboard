@@ -1,6 +1,6 @@
 # GiancArtboard
 
-# New in version 2
+### New in version 2
 Compatible with Sketch 45.1
 Now you can exclude artboards or pages from exporting by prefixing their name with “-”.
 
