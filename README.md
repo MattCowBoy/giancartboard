@@ -46,12 +46,12 @@ If you use Artboards Tricks from @rommanurik, artboards will be ordered as they 
 
 ![GiancArtboard](https://github.com/MattCowBoy/giancartboard/blob/master/Screenshots/Check%20inaccurancy%20Copy.png)
 
-I'd like to thank you all github community and Sketch Developers Community. 
+I'd like to thank you all github community and Sketch Developers Community.</br>
 Some functions in my code are based on code from others, especially:
-<b>@romannurik</b> https://github.com/romannurik .
-<b>@sonburn</b> https://github.com/sonburn/symbol-organizer .
-<b>@rodi01</b> https://github.com/rodi01/RenameIt .
-<b>@andrewfiorillo</b> https://github.com/andrewfiorillo .
-<b>@mathieudutour</b> https://github.com/mathieudutour .
+-<b>@romannurik</b> https://github.com/romannurik
+-<b>@sonburn</b> https://github.com/sonburn/symbol-organizer
+-<b>@rodi01</b> https://github.com/rodi01/RenameIt
+-<b>@andrewfiorillo</b> https://github.com/andrewfiorillo
+-<b>@mathieudutour</b> https://github.com/mathieudutour
 
 
