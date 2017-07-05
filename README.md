@@ -47,7 +47,7 @@ If you use Artboards Tricks from @rommanurik, artboards will be ordered in the l
 ![GiancArtboard](https://github.com/MattCowBoy/giancartboard/blob/master/Screenshots/Check%20inaccurancy%20Copy.png)
 
 
-### GiancArtboard is a plugin made by <a href="www.linkedin.com/in/matteovacca">Matteo Vacca<a/> & <a href="www.linkedin.com/in/marcoditeodoro">Marco Di Teodoro<a/>, with love from Rome!
+### GiancArtboard is a plugin made by [[www.linkedin.com/in/matteovacca|Matteo Vacca]] & <a href="www.linkedin.com/in/marcoditeodoro">Marco Di Teodoro<a/>, from Rome with love!
 
 I'd like to thank you all github community and Sketch Developers Community.</br>
 Some functions in my code are based on code from others, especially:</br>
