@@ -23,7 +23,7 @@ GiancArtboard is a Sketch plugin with 2 main features:
     - device/page/artboard.png
 
 Artboards and pages will be numbered as they ordered in the layer list.
-If you use Artboards Tricks from @rommanurik, artboards will be ordered as they show up in the layer list.
+If you use Artboards Tricks from @rommanurik, artboards will be ordered in the layer list as they show up in canvas.
 <a href="https://github.com/romannurik/Sketch-ArtboardTricks">Download Artboard Trick</a>
 
 
@@ -45,6 +45,9 @@ If you use Artboards Tricks from @rommanurik, artboards will be ordered as they 
 ### Output
 
 ![GiancArtboard](https://github.com/MattCowBoy/giancartboard/blob/master/Screenshots/Check%20inaccurancy%20Copy.png)
+
+
+### GiancArtboard is a plugin made by <a href="www.linkedin.com/in/matteovacca">Matteo Vacca<a/> & <a href="www.linkedin.com/in/marcoditeodoro">Marco Di Teodoro<a/>, with love from Rome!
 
 I'd like to thank you all github community and Sketch Developers Community.</br>
 Some functions in my code are based on code from others, especially:</br>
