@@ -1,6 +1,6 @@
 # GiancArtboard
 
-### New in version 2
+## New in version 2
 Compatible with Sketch 45.1
 Now you can exclude artboards or pages from exporting by prefixing their name with “-”.
 
@@ -24,7 +24,7 @@ GiancArtboard is a Sketch plugin with 2 main features:
 
 ![GiancArtboard](https://github.com/MattCowBoy/giancartboard/blob/master/Screenshots/How%20it%20works%3F.png)
 
-<b>Output</b>
+### Output
 
 ![GiancArtboard](https://github.com/MattCowBoy/giancartboard/blob/master/Screenshots/Output.png)
 
@@ -37,7 +37,7 @@ GiancArtboard is a Sketch plugin with 2 main features:
 
 ![GiancArtboard](https://github.com/MattCowBoy/giancartboard/blob/master/Screenshots/Check%20inaccurancy.png)
 
-<b>Output</b>
+### Output
 
 ![GiancArtboard](https://github.com/MattCowBoy/giancartboard/blob/master/Screenshots/Check%20inaccurancy%20Copy.png)
 
