@@ -1,10 +1,11 @@
 # GiancArtboard
 
 ## New in version 2
-Compatible with Sketch 45.1
+Compatible with Sketch 45.1.
+
 Now you can exclude artboards or pages from exporting by prefixing their name with “-”.
 
-
+<hr/>
 GiancArtboard is a Sketch plugin with 2 main features:
 
 1. Quick exportation of artboards grouped in  folders ordered by pages and resolution (width). 
