@@ -1,0 +1,31 @@
+
+{
+    "name" : "GiancArtboard",
+    "identifier" : "giancArtboard.plugin",
+    "version" : "2.0",
+    "description" : "Export all artboards numbered and perfectly organized into folders. No more inaccuracies!",
+    "icon" : "Resources/icon.png",
+    "authorEmail" : "m.vacca03@gmail.com",
+    "author" : "Matteo Vacca",
+
+    "commands" : [
+    {
+      "name" : "Run GiancArtboard",
+      "script" : "giancArtboard.js",
+      "handler" : "onRun",
+      "shortcut" : "control alt y",
+      "identifier" : "giancArtboard.plugin.giancArtboard", 
+      "description" : "Export all artboards numbered and perfectly organized into folders. No more inaccuracies!",
+      "icon" : "Resources/icon.png",
+    },
+    {
+      "script" : "correctInacurracy.js",
+      "handler" : "onRun",
+      "shortcut" : "control alt i",
+      "name" : "Check incorrect artboards",
+      "identifier" : "giancArtboard.plugin.correctInacurracy",
+      "description" : "Check if there are any artboard with a different width from the one you are designing. No more inaccuracies!",
+      "icon" : "Resources/icon.png",
+    }
+  ],
+}
