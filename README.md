@@ -50,9 +50,6 @@ If you use Artboards Tricks from @rommanurik, artboards will be ordered in the l
 
 ### GiancArtboard is a plugin made by [Matteo Vacca](http://www.linkedin.com/in/matteovacca)  & [Marco Di Teodoro](http://www.linkedin.com/in/marcoditeodoro), from Rome with love!
 
-<a href="http://bit.ly/SketchRunnerWebsite">
- <img src="http://bit.ly/RunnerBadgeBlue">
-</a>
 
 I'd like to thank you all github community and Sketch Developers Community.</br>
 Some functions in my code are based on code from others, especially:</br>
@@ -63,4 +60,10 @@ Some functions in my code are based on code from others, especially:</br>
 - <b><a href="https://github.com/andrewfiorillo">@andrewfiorillo</a></b>
 - <b><a href=" https://github.com/mathieudutour">@mathieudutour</a></b>
 
+
+<br/>
+<br/>
+<a href="http://bit.ly/SketchRunnerWebsite">
+ <img src="http://bit.ly/RunnerBadgeBlue">
+</a>
 
