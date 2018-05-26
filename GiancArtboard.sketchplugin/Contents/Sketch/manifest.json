@@ -16,7 +16,7 @@
       "shortcut" : "control alt y",
       "identifier" : "giancArtboard.plugin.giancArtboard", 
       "description" : "Export all artboards numbered and perfectly organized into folders. No more inaccuracies!",
-      "icon" : "Resources/icon.png",
+      "icon" : "Resources/icon.png"
     },
     {
       "script" : "correctInacurracy.js",
@@ -25,7 +25,7 @@
       "name" : "Check incorrect artboards",
       "identifier" : "giancArtboard.plugin.correctInacurracy",
       "description" : "Check if there are any artboard with a different width from the one you are designing. No more inaccuracies!",
-      "icon" : "Resources/icon.png",
+      "icon" : "Resources/icon.png"
     }
-  ],
+  ]
 }
